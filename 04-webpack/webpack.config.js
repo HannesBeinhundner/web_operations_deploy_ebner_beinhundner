@@ -1,10 +1,11 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
     entry: "./src/index.js",
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "main.js",
+        filename: "[name].[contenthash].js",
     },
     module: {
         rules: [
@@ -18,6 +19,18 @@ module.exports = {
                     "sass-loader", //SASS to CSS
                 ],
             },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: "asset/resource",
+            },
         ],
     },
+    devServer: {
+        static: "./dist",
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "index.html", // or src/index.html
+        }),
+    ],
 };
