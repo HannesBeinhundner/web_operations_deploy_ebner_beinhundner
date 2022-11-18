@@ -1,10 +1,11 @@
-import _ from "lodash"; // new impoert
+import _ from "lodash/join"; // new impoert
+import "./css/style.css"; // css import
 
 function component() {
     const element = document.createElement("div");
 
     // Uses the Lodash library to join the array
-    element.innerHTML = _.join(["Hello", "webpack"], " ");
+    element.innerHTML = join(["Hello", "webpack"], " ");
 
     return element;
 }

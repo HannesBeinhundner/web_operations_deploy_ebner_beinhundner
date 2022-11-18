@@ -1,18 +1,21 @@
 {
-  "name": "04-webpack",
-  "version": "1.0.0",
-  "description": "In this assignment you will learn to configure and use webpack as a bundler.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "lodash": "^4.17.21"
-  },
-  "devDependencies": {
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.0"
-  }
+    "name": "04-webpack",
+    "version": "1.0.0",
+    "description": "In this assignment you will learn to configure and use webpack as a bundler.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "npx webpack --mode=production"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "lodash": "^4.17.21"
+    },
+    "devDependencies": {
+        "css-loader": "^6.7.2",
+        "style-loader": "^3.3.1",
+        "webpack": "^5.75.0",
+        "webpack-cli": "^5.0.0"
+    }
 }
