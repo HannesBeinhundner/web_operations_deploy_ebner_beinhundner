@@ -1,5 +1,5 @@
-import _ from "lodash/join"; // new impoert
-import "./css/style.css"; // css import
+import join from "lodash/join"; // new impoert
+import "./scss/style.scss"; // css import
 
 function component() {
     const element = document.createElement("div");
