@@ -1,5 +1,7 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const devMode = process.env.NODE_ENV !== "production"; // See note below
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     entry: "./src/index.js",
@@ -7,16 +9,21 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         filename: "[name].[contenthash].js",
     },
+    devServer: {
+        static: {
+            directory: path.join(__dirname, "dist"),
+        },
+        compress: true,
+        port: 9000,
+    },
     module: {
         rules: [
             {
-                test: /\.s[ac]ss$/i, //Update Test
+                test: /\.s[ac]ss$/i,
                 use: [
-                    // Creates `style` nodes from JS strings
-                    "style-loader",
-                    // Translates CSS into CommonJS
+                    MiniCssExtractPlugin.loader, // Replace the style loader with the new plugin
                     "css-loader",
-                    "sass-loader", //SASS to CSS
+                    "sass-loader",
                 ],
             },
             {
@@ -25,12 +32,13 @@ module.exports = {
             },
         ],
     },
-    devServer: {
-        static: "./dist",
-    },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "index.html", // or src/index.html
+            template: "index.html",
+        }),
+        // Init the new plugin
+        new MiniCssExtractPlugin({
+            filename: devMode ? "[name].css" : "[name].[contenthash].css",
         }),
     ],
 };
